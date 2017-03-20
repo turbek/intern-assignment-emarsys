@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,13 +10,20 @@ import static org.junit.Assert.assertEquals;
  */
 public class TestDestinationOrganizer {
 
+    private DestinationOrganizer destinationOrganizer;
+    private ArrayList<Destination> returnList;
+
+    @Before
+    public void setUp() throws Exception {
+        destinationOrganizer = new DestinationOrganizer();
+        returnList = new ArrayList<>();
+    }
+
     @Test
     public void testIfReturnsParameters() throws Exception {
-        DestinationOrganizer destinationOrganizer = new DestinationOrganizer();
         Destination x = new Destination();
-        ArrayList<Destination> trueList = new ArrayList<Destination>();
-        trueList.add(x);
-        assertEquals(trueList, destinationOrganizer.organize(x));
+        returnList.add(x);
+        assertEquals(returnList, destinationOrganizer.organize(x));
     }
 
 }
