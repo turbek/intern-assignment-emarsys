@@ -3,14 +3,11 @@ import java.util.ArrayList;
 public class DestinationOrganizer {
     private ArrayList<Destination> OrganizedDestinations = new ArrayList<>();
 
-    public ArrayList<Destination> organize(Destination ... destinations){
+    public ArrayList<Destination> organize(Destination... destinations){
 
+        checkExceptions(destinations);
 
         for(Destination destination : destinations){
-            if(OrganizedDestinations.contains(destination)){
-                throw new IllegalArgumentException("This destination already exists as destination!");
-            }
-
             addDestination(destination);
         }
 
@@ -34,5 +31,9 @@ public class DestinationOrganizer {
         }
     }
 
-
+    private void checkExceptions(Destination[] destinations) {
+        if(destinations.length < 1){
+            throw new IllegalArgumentException("Destinations should contain at least one element!");
+        }
+    }
 }

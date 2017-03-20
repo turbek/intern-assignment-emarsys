@@ -106,12 +106,9 @@ public class TestDestinationOrganizer {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testDuplicateDestinations(){
-        testList.add(z);
-        testList.add(z);
-        testList.add(v);
+    public void testNoInput(){
 
-        destinationOrganizer.organize(z, z, v);
+        destinationOrganizer.organize();
     }
 
 }
