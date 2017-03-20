@@ -1,5 +1,6 @@
 public class Destination {
     private Destination dependency;
+    private Destination parent;
     private boolean visited;
 
     Destination(){
@@ -7,6 +8,14 @@ public class Destination {
 
     Destination(Destination dependency){
         this.dependency = dependency;
+    }
+
+    public Destination getParent() {
+        return parent;
+    }
+
+    public void setParent(Destination parent) {
+        this.parent = parent;
     }
 
     public boolean isVisited() {
