@@ -11,12 +11,14 @@ public class TestDestinationOrganizer {
     private DestinationOrganizer destinationOrganizer;
     private ArrayList<Destination> returnList;
     private Destination x;
+    private Destination y;
 
     @Before
     public void setUp() throws Exception {
+        y = new Destination();
+        x = new Destination();
         destinationOrganizer = new DestinationOrganizer();
         returnList = new ArrayList<>();
-        x = new Destination();
     }
 
     @After
@@ -34,9 +36,9 @@ public class TestDestinationOrganizer {
 
     @Test
     public void testIfDependencyAlreadyVisited(){
-        Destination y = new Destination();
-        y.setVisited(false);
         x.setDependency(y);
+        y.setVisited(false);
         assertEquals(returnList, destinationOrganizer.organize(x));
     }
+
 }
