@@ -1,4 +1,4 @@
-### Intern assignment to emarsys
+### Intern assignment emarsys
 
 
 For this assignment I used Java 8 with Maven for the dependencies.
