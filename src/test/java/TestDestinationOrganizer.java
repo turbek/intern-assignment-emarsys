@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -53,7 +54,7 @@ public class TestDestinationOrganizer {
     @Test
     public void testIfDependencyIsVisitedIsTrue(){
         test2.setVisited(true);
-        test1.setDependency(test2);
+        test1 = new Destination(test2);
         assertTrue(destinationOrganizer.organize(test1).get(0).isVisited());
     }
 
@@ -62,9 +63,8 @@ public class TestDestinationOrganizer {
         Destination a = new Destination();
         Destination b = new Destination();
         Destination c = new Destination();
-        testList.add(a);
-        testList.add(b);
-        testList.add(c);
+        testList.addAll(Arrays.asList(a, b, c));
+
         assertEquals(testList, destinationOrganizer.organize(a, b, c));
     }
 
@@ -74,33 +74,22 @@ public class TestDestinationOrganizer {
         Destination y = new Destination(z);
         Destination x = new Destination();
         z.setParent(y);
-        testList.add(x);
-        testList.add(z);
-        testList.add(y);
+        testList.addAll(Arrays.asList(x, z, y));
+
         assertEquals(testList, destinationOrganizer.organize(x, y, z));
     }
 
     @Test
     public void testWithSixInputsWithDependencies(){
         ArrayList<Destination> checkList = new ArrayList<>();
-        checkList.add(u);
-        checkList.add(x);
-        checkList.add(z);
-        checkList.add(w);
-        checkList.add(v);
-        checkList.add(y);
+        checkList.addAll(Arrays.asList(u, x, z, w, v, y));
 
         assertEquals(checkList, destinationOrganizer.organize(u, z, w, v, x, y));
     }
 
     @Test
     public void testWithSixInputsWithDependencies_ChangeOrder(){
-        testList.add(z);
-        testList.add(w);
-        testList.add(v);
-        testList.add(y);
-        testList.add(u);
-        testList.add(x);
+        testList.addAll(Arrays.asList(z, w, v, y, u, x));
 
         assertEquals(testList, destinationOrganizer.organize(w, x, v, u, y, z));
     }
@@ -110,5 +99,6 @@ public class TestDestinationOrganizer {
 
         destinationOrganizer.organize();
     }
+
 
 }
