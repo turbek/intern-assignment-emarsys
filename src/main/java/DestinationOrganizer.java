@@ -14,6 +14,7 @@ public class DestinationOrganizer {
 
     private void addDestination(Destination destination) {
         if (destination.getDependency() == null || destination.getDependency().isVisited()) {
+            destination.setVisited(true);
             OrganizedDestinations.add(destination);
         }
     }

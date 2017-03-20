@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestDestinationOrganizer {
 
@@ -39,6 +40,13 @@ public class TestDestinationOrganizer {
         x.setDependency(y);
         y.setVisited(false);
         assertEquals(returnList, destinationOrganizer.organize(x));
+    }
+
+    @Test
+    public void testIfDependencyIsVisitedIsTrue(){
+        y.setVisited(true);
+        x.setDependency(y);
+        assertTrue(destinationOrganizer.organize(x).get(0).isVisited());
     }
 
 }
