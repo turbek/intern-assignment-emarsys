@@ -84,18 +84,22 @@ public class TestDestinationOrganizer {
 
     @Test
     public void testWithSixInputsWithDependencies(){
-        ArrayList<Destination> checkList = new ArrayList<>();
-        checkList.addAll(Arrays.asList(u, x, z, w, v, y));
+        ArrayList<Destination> result = destinationOrganizer.organize(u, z, w, v, x, y);
 
-        assertEquals(checkList, destinationOrganizer.organize(u, z, w, v, x, y));
+        assertTrue(result.indexOf(w) > result.indexOf(z));
+        assertTrue(result.indexOf(x) > result.indexOf(u));
+        assertTrue(result.indexOf(v) > result.indexOf(w));
+        assertTrue(result.indexOf(y) > result.indexOf(v));
     }
 
     @Test
     public void testWithSixInputsWithDependencies_ChangeOrder(){
-        testList.addAll(Arrays.asList(z, w, v, y, u, x));
+        ArrayList<Destination> result = destinationOrganizer.organize(w, x, v, u, y, z);
 
-
-        assertEquals(testList, destinationOrganizer.organize(w, x, v, u, y, z));
+        assertTrue(result.indexOf(w) > result.indexOf(z));
+        assertTrue(result.indexOf(x) > result.indexOf(u));
+        assertTrue(result.indexOf(v) > result.indexOf(w));
+        assertTrue(result.indexOf(y) > result.indexOf(v));
     }
 
     @Test(expected = IllegalArgumentException.class)
