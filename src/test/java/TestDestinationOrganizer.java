@@ -38,7 +38,6 @@ public class TestDestinationOrganizer {
     @Test
     public void testIfDependencyAlreadyVisited(){
         x.setDependency(y);
-        y.setVisited(false);
         assertEquals(returnList, destinationOrganizer.organize(x));
     }
 
