@@ -76,7 +76,10 @@ public class TestDestinationOrganizer {
         z.setParent(y);
         testList.addAll(Arrays.asList(x, z, y));
 
-        assertEquals(testList, destinationOrganizer.organize(x, y, z));
+        ArrayList<Destination> result = destinationOrganizer.organize(x, y, z);
+
+        assertTrue(result.indexOf(y) > result.indexOf(z));
+        assertEquals(testList, result);
     }
 
     @Test
@@ -90,6 +93,7 @@ public class TestDestinationOrganizer {
     @Test
     public void testWithSixInputsWithDependencies_ChangeOrder(){
         testList.addAll(Arrays.asList(z, w, v, y, u, x));
+
 
         assertEquals(testList, destinationOrganizer.organize(w, x, v, u, y, z));
     }
