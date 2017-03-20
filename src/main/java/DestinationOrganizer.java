@@ -5,7 +5,12 @@ public class DestinationOrganizer {
 
     public ArrayList<Destination> organize(Destination ... destinations){
 
+
         for(Destination destination : destinations){
+            if(OrganizedDestinations.contains(destination)){
+                throw new IllegalArgumentException("This destination already exists as destination!");
+            }
+
             addDestination(destination);
         }
 

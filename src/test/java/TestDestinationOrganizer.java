@@ -105,4 +105,13 @@ public class TestDestinationOrganizer {
         assertEquals(testList, destinationOrganizer.organize(w, x, v, u, y, z));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testDuplicateDestinations(){
+        testList.add(z);
+        testList.add(z);
+        testList.add(v);
+
+        destinationOrganizer.organize(z, z, v);
+    }
+
 }
