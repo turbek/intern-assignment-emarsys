@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class TestDestinationOrganizer {
 
     private DestinationOrganizer destinationOrganizer;
-    private ArrayList<Destination> returnList;
+    private ArrayList<Destination> testList;
     private Destination test1;
     private Destination test2;
     private Destination u;
@@ -23,7 +23,7 @@ public class TestDestinationOrganizer {
     @Before
     public void setUp() throws Exception {
         destinationOrganizer = new DestinationOrganizer();
-        returnList = new ArrayList<>();
+        testList = new ArrayList<>();
         test1 = new Destination();
         test2 = new Destination();
         u = new Destination();
@@ -41,14 +41,13 @@ public class TestDestinationOrganizer {
     @After
     public void tearDown() throws Exception {
         destinationOrganizer = null;
-        returnList = null;
-        test1 = null;
+        testList = null;
     }
 
     @Test
     public void testIfReturnsOneParameter() {
-        returnList.add(test1);
-        assertEquals(returnList, destinationOrganizer.organize(test1));
+        testList.add(test1);
+        assertEquals(testList, destinationOrganizer.organize(test1));
     }
 
     @Test
@@ -63,10 +62,10 @@ public class TestDestinationOrganizer {
         Destination a = new Destination();
         Destination b = new Destination();
         Destination c = new Destination();
-        returnList.add(a);
-        returnList.add(b);
-        returnList.add(c);
-        assertEquals(returnList, destinationOrganizer.organize(a, b, c));
+        testList.add(a);
+        testList.add(b);
+        testList.add(c);
+        assertEquals(testList, destinationOrganizer.organize(a, b, c));
     }
 
     @Test
@@ -75,10 +74,10 @@ public class TestDestinationOrganizer {
         Destination y = new Destination(z);
         Destination x = new Destination();
         z.setParent(y);
-        returnList.add(x);
-        returnList.add(z);
-        returnList.add(y);
-        assertEquals(returnList, destinationOrganizer.organize(x, y, z));
+        testList.add(x);
+        testList.add(z);
+        testList.add(y);
+        assertEquals(testList, destinationOrganizer.organize(x, y, z));
     }
 
     @Test
@@ -96,14 +95,14 @@ public class TestDestinationOrganizer {
 
     @Test
     public void testWithSixInputsWithDependencies_ChangeOrder(){
-        returnList.add(z);
-        returnList.add(w);
-        returnList.add(v);
-        returnList.add(y);
-        returnList.add(u);
-        returnList.add(x);
+        testList.add(z);
+        testList.add(w);
+        testList.add(v);
+        testList.add(y);
+        testList.add(u);
+        testList.add(x);
 
-        assertEquals(returnList, destinationOrganizer.organize(w, x, v, u, y, z));
+        assertEquals(testList, destinationOrganizer.organize(w, x, v, u, y, z));
     }
 
 }
