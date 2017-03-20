@@ -7,6 +7,9 @@ public class Destination {
     }
 
     Destination(Destination dependency){
+        if (this == dependency){
+            throw new IllegalArgumentException("Object can't be it's own dependency!");
+        }
         this.dependency = dependency;
     }
 
@@ -30,7 +33,4 @@ public class Destination {
         return dependency;
     }
 
-    public void setDependency(Destination dependency) {
-        this.dependency = dependency;
-    }
 }
