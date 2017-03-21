@@ -107,12 +107,10 @@ public class TestDestinationOrganizer {
         Destination q = new Destination();
         Destination w = new Destination(q);
         Destination e = new Destination(q);
-        Destination r = new Destination(q);
         q.setParent(w);
         q.setParent(e);
-        q.setParent(r);
 
-        ArrayList<Destination> result = destinationOrganizer.organize(q, w, e, r);
+        ArrayList<Destination> result = destinationOrganizer.organize(q, w, e);
 
     }
 
