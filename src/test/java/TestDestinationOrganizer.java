@@ -114,6 +114,21 @@ public class TestDestinationOrganizer {
 
     }
 
+    @Test
+    public void testFourInputsWithDependencies(){
+        Destination k = new Destination();
+        Destination n = new Destination();
+        Destination m = new Destination(n);
+        Destination l = new Destination(m);
+        n.setParent(m);
+        m.setParent(l);
+
+        ArrayList<Destination> result = destinationOrganizer.organize(m, n, l);
+
+        assertTrue(result.indexOf(m) > result.indexOf(n));
+        assertTrue(result.indexOf(l) > result.indexOf(m));
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void testNoInput(){
 
