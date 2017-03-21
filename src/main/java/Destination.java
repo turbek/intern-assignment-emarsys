@@ -15,6 +15,9 @@ public class Destination {
     }
 
     public void setParent(Destination parent) {
+        if(this.getParent() != null){
+            throw new IllegalArgumentException("This Destination already has a parent!");
+        }
         this.parent = parent;
     }
 

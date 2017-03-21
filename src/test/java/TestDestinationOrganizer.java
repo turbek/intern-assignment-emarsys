@@ -102,18 +102,17 @@ public class TestDestinationOrganizer {
         assertTrue(result.indexOf(y) > result.indexOf(v));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testWithFourInputsWithSameDependencies(){
         Destination q = new Destination();
         Destination w = new Destination(q);
         Destination e = new Destination(q);
         Destination r = new Destination(q);
+        q.setParent(w);
+        q.setParent(e);
+        q.setParent(r);
 
         ArrayList<Destination> result = destinationOrganizer.organize(q, w, e, r);
-
-        assertTrue(result.indexOf(w) > result.indexOf(q));
-        assertTrue(result.indexOf(e) > result.indexOf(q));
-        assertTrue(result.indexOf(r) > result.indexOf(q));
 
     }
 
